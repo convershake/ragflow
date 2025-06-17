@@ -1,8 +1,6 @@
 services:
   es01:
     container_name: ragflow-es-01
-    profiles:
-      - elasticsearch
     image: elasticsearch:${STACK_VERSION}
     volumes:
       - esdata01:/usr/share/elasticsearch/data
@@ -33,6 +31,7 @@ services:
       retries: 120
     networks:
       - ragflow
+      - convershake_network
     restart: on-failure
 
   opensearch01:
@@ -71,6 +70,7 @@ services:
       retries: 120
     networks:
       - ragflow
+      - convershake_network
     restart: on-failure
 
   infinity:
@@ -96,6 +96,7 @@ services:
         hard: 500000
     networks:
       - ragflow
+      - convershake_network
     healthcheck:
       test: ["CMD", "curl", "http://localhost:23820/admin/node/current"]
       interval: 10s
@@ -116,6 +117,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - ragflow
+      - convershake_network
     security_opt:
       - no-new-privileges:true
     environment:
@@ -156,6 +158,7 @@ services:
       - ./init.sql:/data/application/init.sql
     networks:
       - ragflow
+      - convershake_network
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-uroot", "-p${MYSQL_PASSWORD}"]
       interval: 10s
@@ -179,6 +182,7 @@ services:
       - minio_data:/data
     networks:
       - ragflow
+      - convershake_network
     restart: on-failure
 
   redis:
@@ -193,6 +197,7 @@ services:
       - redis_data:/data
     networks:
       - ragflow
+      - convershake_network
     restart: on-failure
 
 
@@ -214,3 +219,6 @@ volumes:
 networks:
   ragflow:
     driver: bridge
+  convershake_network:
+    name: convershake_network
+    external: true

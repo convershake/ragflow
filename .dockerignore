@@ -1,0 +1,59 @@
+# Exclude git and development files (but keep .git for version info)
+# .git
+.github
+.gitignore*
+.pre-commit-config.yaml
+
+# Exclude documentation (but keep docs for build)
+README*.md
+SECURITY.md
+# docs/
+
+# Exclude test and example files
+test/
+example/
+
+# Exclude development dependencies
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Exclude IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Exclude OS files
+.DS_Store
+Thumbs.db
+
+# Exclude logs
+*.log
+
+# Keep only what's needed for Docker build
+!chromedriver-linux64-121-0-6167-85
+!chrome-linux64-121-0-6167-85
+!cl100k_base.tiktoken
+!libssl*.deb
+!tika-server-standard-3.0.0.jar*
+!nltk_data/
+!huggingface.co/ 

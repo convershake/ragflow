@@ -1,0 +1,49 @@
+{
+  "name": "ragflow",
+  "root": "apps/ragflow",
+  "projectType": "application",
+  "targets": {
+    "dev": {
+      "command": "docker-compose up ragflow infinity mysql minio redis",
+      "options": {
+        "cwd": "."
+      }
+    },
+    "stop": {
+      "command": "docker-compose stop ragflow infinity mysql minio redis",
+      "options": {
+        "cwd": "."
+      }
+    },
+    "logs": {
+      "command": "docker-compose logs -f ragflow",
+      "options": {
+        "cwd": "."
+      }
+    },
+    "shell": {
+      "command": "docker exec -it ragflow-server bash",
+      "options": {
+        "cwd": "."
+      }
+    },
+    "clean": {
+      "command": "docker-compose down -v ragflow infinity mysql minio redis",
+      "options": {
+        "cwd": "."
+      }
+    },
+    "ui": {
+      "command": "open http://localhost:8001",
+      "options": {
+        "cwd": "."
+      }
+    },
+    "minio-console": {
+      "command": "open http://localhost:9101",
+      "options": {
+        "cwd": "."
+      }
+    }
+  }
+} 
